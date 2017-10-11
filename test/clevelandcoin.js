@@ -8,23 +8,6 @@ contract('ClevelandCoin', function(accounts) {
       assert.equal(balance.valueOf(), 10000, "10000 wasn't in the first account");
     });
   });
-  it("should call a function that depends on a linked library", function() {
-    var cle;
-    var clevelandCoinBalance;
-    var clevelandCoinEthBalance;
-
-    return ClevelandCoin.deployed().then(function(instance) {
-      cle = instance;
-      return cle.getBalance.call(accounts[0]);
-    }).then(function(outCoinBalance) {
-      clevelandCoinBalance = outCoinBalance.toNumber();
-      return cle.getBalanceInEth.call(accounts[0]);
-    }).then(function(outCoinBalanceEth) {
-      clevelandCoinEthBalance = outCoinBalanceEth.toNumber();
-    }).then(function() {
-      assert.equal(clevelandCoinEthBalance, 2 * clevelandCoinBalance, "Library function returned unexpected function, linkage may be broken");
-    });
-  });
   it("should send coin correctly", function() {
     var cle;
 

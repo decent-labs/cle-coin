@@ -1,0 +1,14 @@
+{
+  "name": "cleveland-coin",
+  "version": "1.0.0",
+  "description": "Cleveland Coin project",
+  "main": "truffle.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Gall",
+  "license": "ISC"
+}

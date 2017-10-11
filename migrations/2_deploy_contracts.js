@@ -1,8 +1,8 @@
 var ConvertLib = artifacts.require("./ConvertLib.sol");
-var MetaCoin = artifacts.require("./MetaCoin.sol");
+var ClevelandCoin = artifacts.require("./ClevelandCoin.sol");
 
 module.exports = function(deployer) {
   deployer.deploy(ConvertLib);
-  deployer.link(ConvertLib, MetaCoin);
-  deployer.deploy(MetaCoin);
+  deployer.link(ConvertLib, ClevelandCoin);
+  deployer.deploy(ClevelandCoin);
 };

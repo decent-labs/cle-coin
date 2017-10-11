@@ -1,32 +1,32 @@
-var MetaCoin = artifacts.require("./MetaCoin.sol");
+var ClevelandCoin = artifacts.require("./ClevelandCoin.sol");
 
-contract('MetaCoin', function(accounts) {
-  it("should put 10000 MetaCoin in the first account", function() {
-    return MetaCoin.deployed().then(function(instance) {
+contract('ClevelandCoin', function(accounts) {
+  it("should put 10000 ClevelandCoin in the first account", function() {
+    return ClevelandCoin.deployed().then(function(instance) {
       return instance.getBalance.call(accounts[0]);
     }).then(function(balance) {
       assert.equal(balance.valueOf(), 10000, "10000 wasn't in the first account");
     });
   });
   it("should call a function that depends on a linked library", function() {
-    var meta;
-    var metaCoinBalance;
-    var metaCoinEthBalance;
+    var cle;
+    var clevelandCoinBalance;
+    var clevelandCoinEthBalance;
 
-    return MetaCoin.deployed().then(function(instance) {
-      meta = instance;
-      return meta.getBalance.call(accounts[0]);
+    return ClevelandCoin.deployed().then(function(instance) {
+      cle = instance;
+      return cle.getBalance.call(accounts[0]);
     }).then(function(outCoinBalance) {
-      metaCoinBalance = outCoinBalance.toNumber();
-      return meta.getBalanceInEth.call(accounts[0]);
+      clevelandCoinBalance = outCoinBalance.toNumber();
+      return cle.getBalanceInEth.call(accounts[0]);
     }).then(function(outCoinBalanceEth) {
-      metaCoinEthBalance = outCoinBalanceEth.toNumber();
+      clevelandCoinEthBalance = outCoinBalanceEth.toNumber();
     }).then(function() {
-      assert.equal(metaCoinEthBalance, 2 * metaCoinBalance, "Library function returned unexpected function, linkage may be broken");
+      assert.equal(clevelandCoinEthBalance, 2 * clevelandCoinBalance, "Library function returned unexpected function, linkage may be broken");
     });
   });
   it("should send coin correctly", function() {
-    var meta;
+    var cle;
 
     // Get initial balances of first and second account.
     var account_one = accounts[0];
@@ -39,20 +39,20 @@ contract('MetaCoin', function(accounts) {
 
     var amount = 10;
 
-    return MetaCoin.deployed().then(function(instance) {
-      meta = instance;
-      return meta.getBalance.call(account_one);
+    return ClevelandCoin.deployed().then(function(instance) {
+      cle = instance;
+      return cle.getBalance.call(account_one);
     }).then(function(balance) {
       account_one_starting_balance = balance.toNumber();
-      return meta.getBalance.call(account_two);
+      return cle.getBalance.call(account_two);
     }).then(function(balance) {
       account_two_starting_balance = balance.toNumber();
-      return meta.sendCoin(account_two, amount, {from: account_one});
+      return cle.sendCoin(account_two, amount, {from: account_one});
     }).then(function() {
-      return meta.getBalance.call(account_one);
+      return cle.getBalance.call(account_one);
     }).then(function(balance) {
       account_one_ending_balance = balance.toNumber();
-      return meta.getBalance.call(account_two);
+      return cle.getBalance.call(account_two);
     }).then(function(balance) {
       account_two_ending_balance = balance.toNumber();
 

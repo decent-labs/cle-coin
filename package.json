@@ -12,5 +12,8 @@
   "author": "Adam Gall",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^5.0.1",
+    "truffle": "^4.1.11",
+    "truffle-hdwallet-provider": "^0.0.5"
   }
 }

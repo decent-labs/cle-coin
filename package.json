@@ -12,6 +12,5 @@
   "author": "Adam Gall",
   "license": "ISC",
   "dependencies": {
-    "zeppelin-solidity": "^1.3.0"
   }
 }

@@ -1,6 +1,6 @@
 pragma solidity ^0.4.4;
+import "./zeppelin/StandardToken.sol";
 
-import 'zeppelin-solidity/contracts/token/StandardToken.sol';
 
 contract ClevelandCoin is StandardToken {
   string public name = 'ClevelandCoin';

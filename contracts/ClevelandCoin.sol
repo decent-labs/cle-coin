@@ -1,15 +1,15 @@
-pragma solidity ^0.4.4;
+pragma solidity 0.4.24;
 
-import 'zeppelin-solidity/contracts/token/StandardToken.sol';
+import "./zeppelin/StandardToken.sol";
+
 
 contract ClevelandCoin is StandardToken {
-  string public name = 'ClevelandCoin';
-  string public symbol = 'CLE';
-  uint public decimals = 0;
-  uint public INITIAL_SUPPLY = 216000000;
+  string public name = "ClevelandCoin";
+  string public symbol = "CLE";
+  uint public decimals = 18;
+  uint public totalSupply = 216000000 * (10 ** decimals);
 
-  function ClevelandCoin() {
-    totalSupply = INITIAL_SUPPLY;
-    balances[msg.sender] = INITIAL_SUPPLY;
+  constructor () public {
+    balances[msg.sender] = totalSupply;
   }
 }
